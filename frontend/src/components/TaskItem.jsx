@@ -16,19 +16,25 @@ function TaskItem({ task, onDelete }) {
   };
 
   return (
-    <div>
-      <input type="checkbox" checked={task.completed} onChange={handleToggle} />
+    <div className="flex items-center justify-between border p-2 rounded">
+      <div className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          checked={task.completed}
+          onChange={handleToggle}
+        />
 
-      <span
-        style={{
-          textDecoration: task.completed ? "line-through" : "none",
-          marginLeft: "8px",
-        }}
+        <span className={task.completed ? "line-through text-gray-400" : ""}>
+          {task.title}
+        </span>
+      </div>
+
+      <button
+        onClick={handleDelete}
+        className="text-red-500 hover:text-red-700"
       >
-        {task.title}
-      </span>
-
-      <button onClick={handleDelete}>Eliminar</button>
+        Eliminar
+      </button>
     </div>
   );
 }

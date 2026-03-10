@@ -16,8 +16,10 @@ router.post("/", (req, res) => {
     return res.status(400).json({ error: "Title is required" });
   }
 
+  const maxId = tasks.length > 0 ? Math.max(...tasks.map((t) => t.id)) : 0;
+
   const newTask = {
-    id: tasks.length + 1,
+    id: maxId + 1,
     title,
     completed: false,
   };
